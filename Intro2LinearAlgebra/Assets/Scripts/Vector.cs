@@ -5,10 +5,20 @@ using UnityEditor;
 #endif
 
 
+[ExecuteInEditMode]
 public class Vector : MonoBehaviour
 {
+    public bool normalize;
     public bool hideTransformHandles;
     public Color color = Color.red;
+
+    public void Update()
+    {
+        if (normalize)
+        {
+            transform.position = transform.position.normalized;
+        }
+    }
 }
 
 #if UNITY_EDITOR
