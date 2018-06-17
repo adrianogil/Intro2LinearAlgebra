@@ -19,6 +19,13 @@ public class Vector : MonoBehaviour
             transform.position = transform.position.normalized;
         }
     }
+
+    public Vector3 position
+    {
+        get {
+            return transform.localPosition;
+        }
+    }
 }
 
 #if UNITY_EDITOR

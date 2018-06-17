@@ -15,7 +15,9 @@ public abstract class MeshGenerator : MonoBehaviour {
         UpdateMesh();
     }
 
-	// Use this for initialization
+	/// <summary>
+    /// Update Mesh 
+    /// </summary>
 	public void UpdateMesh () {
 		
         Mesh newMesh = GenerateMesh();

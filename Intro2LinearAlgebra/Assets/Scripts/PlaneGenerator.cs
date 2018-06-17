@@ -8,20 +8,24 @@ using UnityEditor;
 
 public class PlaneGenerator : MeshGenerator {
 
+    public Vector a, b;
+
 	protected override Mesh GenerateMesh()
     {
         Mesh mesh = new Mesh();
         
         mesh.vertices = new Vector3[]
         {
-            new Vector3(0f, 0f, 1f),
-            new Vector3(0f, 1f, 0f),
-            new Vector3(0f, 1f, 1f),
+            new Vector3(0f, 0f, 0f),
+            a.position,
+            b.position,
+            a.position + b.position
         };
 
         mesh.triangles = new int[]
         {
-            0, 1, 2
+            0, 1, 2,
+            3, 2, 1
         };
 
 
