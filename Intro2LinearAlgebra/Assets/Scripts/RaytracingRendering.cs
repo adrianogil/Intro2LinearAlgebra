@@ -12,6 +12,9 @@ public class RaytracingRendering : MonoBehaviour
         {
             tempTexture = new Texture2D(renderTexture.width, renderTexture.height);
         }
+
+        y = renderTexture.height - y  - 1;
+
         tempTexture.SetPixel(x, y, color);
     }
 
