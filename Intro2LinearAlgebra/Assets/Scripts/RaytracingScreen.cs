@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public class RaytracingScreen : MonoBehaviour {
+public class RaytracingScreen : RaytracingRendering {
 
     public Color backgroundColor;
 
@@ -37,12 +37,12 @@ public class RaytracingScreen : MonoBehaviour {
         RayData rayData = RaytracingUtils.Raycast(ray);
         if (rayData.hit)
         {
-            // Render(x,y, rayData.color);
+            Render(0,0, rayData.color);
         } else {
-            // Render(x,y, backgroundColor);
+            Render(0,0, backgroundColor);
         }
 
-        // UpdateRender();
+        UpdateRender();
 	}
 }
 
