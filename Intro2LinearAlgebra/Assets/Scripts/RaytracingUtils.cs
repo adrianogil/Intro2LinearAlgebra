@@ -18,7 +18,14 @@ public class RaytracingUtils
         {
             Debug.DrawLine(ray.origin, hit.point, Color.blue);
             rayData.hit = true;
-            rayData.color = Color.blue;
+            RaytracingColor rayColor = hit.transform.gameObject.GetComponent<RaytracingColor>();
+            if (rayColor == null)
+            {
+                rayData.color = Color.blue;
+            } else {
+                rayData.color = rayColor.color;
+            }
+            
         } else {
             Debug.DrawLine(ray.origin, ray.origin + 100f*ray.direction, Color.red);
             rayData.hit = false;
