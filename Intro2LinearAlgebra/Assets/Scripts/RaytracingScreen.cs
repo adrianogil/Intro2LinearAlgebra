@@ -14,8 +14,12 @@ public class RaytracingScreen : RaytracingRendering {
 
     private float height, width;
 
+    private RaytracingLight light;
+
     void Start()
     {
+        light = Object.FindObjectOfType<RaytracingLight>();
+
         UpdateScreen();
     }
 
@@ -31,6 +35,8 @@ public class RaytracingScreen : RaytracingRendering {
         width = height * (Screen.width * 1f/ Screen.height);
 
         transform.localScale = new Vector3(width, height, 1f);
+
+
 	}
 	
 
@@ -75,7 +81,13 @@ public class RaytracingScreen : RaytracingRendering {
                 RayData rayData = RaytracingUtils.Raycast(ray);
                 if (rayData.hit)
                 {
-                    Render(x,y, rayData.color);
+                    Color color = rayData.color;
+
+                    Vector3 lightDirection = (light.transform.position - rayData.hitPosition).normalized;
+
+                    color = color * light.color * light.intensity * Vector3.Dot(lightDirection, rayData.normal);
+
+                    Render(x,y, color);
                 } else {
                     Render(x,y, backgroundColor);
                 }
